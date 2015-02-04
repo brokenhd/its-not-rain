@@ -14,5 +14,15 @@ public class Load : MonoBehaviour {
 		GameInformation.HeroDefense = PlayerPrefs.GetInt("HERODEFENSE");
 		GameInformation.HeroDodge = PlayerPrefs.GetInt("HERODODGE");
 		GameInformation.HeroAbilityPoints = PlayerPrefs.GetInt("HEROABILITYPOINTS");
+
+		if (PlayerPrefs.GetString("ItemOne") != null) {
+			GameInformation.ItemOne = (Item)CharacterSerialization.Load("ItemOne");
+		}
+
+		Debug.Log ("Loaded Game");
+		Debug.Log (GameInformation.HeroLevel);
+		Debug.Log (GameInformation.HeroStrength);
+		Debug.Log (GameInformation.HeroAbilityPower);
+		Debug.Log (GameInformation.HeroDodge);
 	}
 }

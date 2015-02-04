@@ -7,6 +7,7 @@ public class GameInformation : MonoBehaviour {
 		DontDestroyOnLoad(transform.gameObject);
 	}
 
+	public static Item ItemOne{get;set;}
 	public static int HeroLevel{get;set;}
 	public static int HeroStrength{get;set;}
 	public static int HeroAbilityPoints{get;set;}

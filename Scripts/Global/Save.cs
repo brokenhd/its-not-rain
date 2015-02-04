@@ -14,6 +14,10 @@ public class Save {
 		PlayerPrefs.SetInt("HERODEFENSE", GameInformation.HeroDefense);
 		PlayerPrefs.SetInt("HERODODGE", GameInformation.HeroDodge);
 		PlayerPrefs.SetInt("HEROABILITYPOINTS", GameInformation.HeroAbilityPoints);
+
+		if (GameInformation.ItemOne != null) {
+			CharacterSerialization.Save ("ItemOne", GameInformation.ItemOne);
+		}
 		Debug.Log ("Saved game");
 	}
 
