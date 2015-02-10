@@ -18,31 +18,4 @@ public class HeroCharacter : CharacterStats {
 		AbilityPower = 5;
 		Defense = 5;
 	}
-
-	HeroCharacter heroCharacter;
-
-//	void OnGUI() {
-//		if(GUILayout.Button ("Save")) {
-//			StoreHeroInfo();
-//			Save.SaveGame ();
-//		}
-//		
-//		if(GUILayout.Button ("Load")) {
-//			Application.LoadLevel ("Second");
-//			Load.LoadGame ();
-//		}
-//	}
-
-	public void StoreHeroInfo() {
-		GameInformation.HeroLevel = CharacterLevel;
-		GameInformation.HeroHealth = Health;
-		GameInformation.HeroAbilityPoints = AbilityPoints;
-		GameInformation.HeroAccuracy = Accuracy;
-		GameInformation.HeroSpeed = Speed;
-		GameInformation.HeroStrength = Strength;
-		GameInformation.HeroDodge = Dodge;
-		GameInformation.HeroLuck = Luck;
-		GameInformation.HeroAbilityPower = AbilityPower;
-		GameInformation.HeroDefense = Defense;
-	}
 }
