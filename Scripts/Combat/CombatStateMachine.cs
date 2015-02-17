@@ -37,6 +37,9 @@ public class CombatStateMachine : MonoBehaviour {
 		// go to player choice
 		// is boss?
 		// if enemy speed > playerspeed, skip to enemy turn, set playerskipped true or false
+
+
+
 	}
 
 	void PlayerTurn() {

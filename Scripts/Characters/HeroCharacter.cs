@@ -4,7 +4,7 @@ using System.Collections;
 public class HeroCharacter : CharacterStats {
 
 	public HeroCharacter() {
-		CharacterName = "Flint";
+		CharacterName = "Hero";
 		CharacterDescription = "Just a guy from a small city.";
 		CharacterLevel = 1;
 
