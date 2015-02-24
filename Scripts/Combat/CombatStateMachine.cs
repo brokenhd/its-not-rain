@@ -3,20 +3,26 @@ using System.Collections;
 
 public class CombatStateMachine : MonoBehaviour {
 
+	StateMachine stateMachine;
+	bool battleOver = false;
+	HeroCharacter hero;
+	int enemyHealth = 100;
+
 	public enum BattleStates {
 		START,
 		PLAYER,
 		ENEMY
 	}
 
-	private BattleStates currentState;
+	public BattleStates currentState;
 
 	void Start() {
+		stateMachine = GetComponent<StateMachine>();
 		currentState = BattleStates.START;
+		hero = GetComponent<HeroCharacter>();
 	}
 
 	void Update() {
-		Debug.Log (currentState);
 
 		switch (currentState) {
 		case (BattleStates.START) :
@@ -37,14 +43,19 @@ public class CombatStateMachine : MonoBehaviour {
 		// go to player choice
 		// is boss?
 		// if enemy speed > playerspeed, skip to enemy turn, set playerskipped true or false
+		Debug.Log ("Hero entered battle");
+		Debug.Log ("An enemy entered battle");
+		Debug.Log ("Hero Health: " + hero.Health);
+		Debug.Log ("Hero Ability Points: " + hero.AbilityPoints);
+		Debug.Log ("Enemy Health: " + enemyHealth);
 
-
-
+		currentState = BattleStates.PLAYER;
 	}
 
 	void PlayerTurn() {
 		// choose battle actions
 		// which players turn is it?
+
 
 		// check ability slots on current players and add to variable
 
@@ -67,6 +78,17 @@ public class CombatStateMachine : MonoBehaviour {
 		// experience gained
 
 		// items dropped >> RandomLoot().Drops() >> toInventory
+		if(battleOver == true) EndCombat ();
+
+	}
+
+	void EndCombat() {
+
+		Debug.Log("Exiting BATTLE");
+		stateMachine.enabled = true;
+		this.enabled = false;
+		enemyHealth = 100;
+
 	}
 
 	void CalculateDamage() {
@@ -88,7 +110,38 @@ public class CombatStateMachine : MonoBehaviour {
 	}
 
 	void OnGUI() {
-		if(GUILayout.Button ("NEXT STATE")) {
+
+		if(currentState == BattleStates.PLAYER) {
+
+			if(GUILayout.Button ("Attack")) {
+
+				enemyHealth -= 25;
+
+				Debug.Log ("Hero hits the enemy for 25 damage!");
+
+				if(enemyHealth > 0) {
+
+					currentState = BattleStates.ENEMY;
+
+				} else {
+
+					EndCombat();
+					currentState = BattleStates.START;
+
+				}
+			}
+
+		}
+
+		if(currentState == BattleStates.ENEMY) {
+
+			hero.Health -= 10;
+			Debug.Log ("The enemy hits you for 10 damage, you have " + hero.Health);
+			currentState = BattleStates.PLAYER;
+
+		}
+
+		if(GUILayout.Button ("NEXT STATE")) {			
 			if(currentState == BattleStates.START) {
 				currentState = BattleStates.PLAYER;
 			} else if(currentState == BattleStates.PLAYER) {
@@ -96,6 +149,11 @@ public class CombatStateMachine : MonoBehaviour {
 			} else if(currentState == BattleStates.ENEMY) {
 				currentState = BattleStates.PLAYER;
 			}
+			
+			Debug.Log (currentState);
+		}
+		if(GUILayout.Button ("End Battle")) {
+			EndCombat ();
 		}
 	}
 

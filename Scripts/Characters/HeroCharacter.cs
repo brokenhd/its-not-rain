@@ -3,6 +3,14 @@ using System.Collections;
 
 public class HeroCharacter : CharacterStats {
 
+	LevelUp levelUp;
+
+	void Start() {
+		levelUp = GetComponent<LevelUp>();
+
+		levelUp.Level ();
+	}
+
 	public HeroCharacter() {
 		CharacterName = "Hero";
 		CharacterDescription = "Just a guy from a small city.";
