@@ -8,7 +8,6 @@ public class HeroCharacter : CharacterStats {
 	void Start() {
 		levelUp = GetComponent<LevelUp>();
 
-		levelUp.Level ();
 	}
 
 	public HeroCharacter() {
