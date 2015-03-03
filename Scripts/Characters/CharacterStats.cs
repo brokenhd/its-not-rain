@@ -7,7 +7,7 @@ public class CharacterStats : MonoBehaviour {
 	private string characterName;
 	private string characterDescription;
 	private int characterLevel;
-	private int experienceGain; // get experience based on current level of player
+	private int toLevel;
 	private int experience;
 
 	// Visible stats in battle
@@ -72,6 +72,14 @@ public class CharacterStats : MonoBehaviour {
 	public int Defense {
 		get {return defense;}
 		set {defense = value;}
+	}
+	public int ToLevel {
+		get {return toLevel;}
+		set {toLevel = value;}
+	}
+	public int Experience {
+		get {return experience;}
+		set {experience = value;}
 	}
 
 }

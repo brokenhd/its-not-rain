@@ -7,8 +7,6 @@ public class HeroCharacter : CharacterStats {
 
 	void Start() {
 		levelUp = GetComponent<LevelUp>();
-
-		levelUp.Level ();
 	}
 
 	public HeroCharacter() {
@@ -25,5 +23,8 @@ public class HeroCharacter : CharacterStats {
 		Luck = 5;
 		AbilityPower = 5;
 		Defense = 5;
+
+		ToLevel = 100;
+		Experience = 0;
 	}
 }
