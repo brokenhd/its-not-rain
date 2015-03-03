@@ -4,9 +4,11 @@ using System.Collections;
 public class CombatStateMachine : MonoBehaviour {
 
 	StateMachine stateMachine;
+	LevelUp levelUp;
 	bool battleOver = false;
 	HeroCharacter hero;
 	int enemyHealth = 100;
+	int xpReward = 100;
 
 	public enum BattleStates {
 		START,
@@ -18,6 +20,7 @@ public class CombatStateMachine : MonoBehaviour {
 
 	void Start() {
 		stateMachine = GetComponent<StateMachine>();
+		levelUp = GetComponent<LevelUp>();
 		currentState = BattleStates.START;
 		hero = GetComponent<HeroCharacter>();
 	}
@@ -87,6 +90,9 @@ public class CombatStateMachine : MonoBehaviour {
 		Debug.Log("Exiting BATTLE");
 		stateMachine.enabled = true;
 		this.enabled = false;
+
+		hero.Experience += xpReward;
+		if(hero.Experience >= hero.ToLevel) levelUp.Level();
 		enemyHealth = 100;
 
 	}

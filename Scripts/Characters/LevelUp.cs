@@ -20,6 +20,7 @@ public class LevelUp : MonoBehaviour {
 		// check if player leveled
 		// if player leveled, level up everything
 
+		characterStats.CharacterLevel += 1;
 		characterStats.Health += 10;
 		characterStats.AbilityPoints += 5;
 		characterStats.Accuracy += 1;
@@ -29,6 +30,11 @@ public class LevelUp : MonoBehaviour {
 		characterStats.Luck += 1;
 		characterStats.AbilityPower += 1;
 		characterStats.Defense += 1;
+
+		characterStats.ToLevel += 100;
+		characterStats.Experience = 0;
+
+		Debug.Log (characterStats.CharacterLevel);
 
 	}
 
