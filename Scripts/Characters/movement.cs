@@ -7,6 +7,7 @@ public class movement : MonoBehaviour {
 	Component scriptManagerStates;
 
 	static public float moving = 0f;
+	public float maxSpeed = 2f;
 	static public float spawnRate = 5f;
 	static public int spawnChance = 5;
 
@@ -30,32 +31,37 @@ public class movement : MonoBehaviour {
 		//Gets 
 		if (Input.GetButton ("Vertical")) {
 			if (Input.GetAxis ("Vertical") > 0) {
-				transform.Translate (Vector3.up * Time.deltaTime, Space.World);
+					anim.SetBool ("down", false);
+					anim.SetBool ("up", true);
+					transform.Translate (Vector3.up * Time.deltaTime * maxSpeed, Space.World);
 			} else {
-				transform.Translate (-Vector3.up * Time.deltaTime, Space.World);
+					transform.Translate (-Vector3.up * Time.deltaTime * maxSpeed, Space.World);
+					anim.SetBool ("up", false);
+					anim.SetBool ("down", true);
 			}
 
 
 			moving += Time.deltaTime;
 
+		} else {
+			anim.SetBool ("up", false);
+			anim.SetBool ("down", false);
 		}
 		if (Input.GetButton ("Horizontal")) {
+			anim.SetBool ("left-right", true);
 			if (Input.GetAxis ("Horizontal") > 0) {
-					transform.Translate (Vector3.right * Time.deltaTime, Space.World);
+					transform.Translate (Vector3.right * Time.deltaTime * maxSpeed, Space.World);
 			} else {
-					transform.Translate (-Vector3.right * Time.deltaTime, Space.World);
+					transform.Translate (-Vector3.right * Time.deltaTime * maxSpeed, Space.World);
 			}
 
 			moving += Time.deltaTime;
 
+		} else {
+			anim.SetBool ("left-right", false);
 		}
 
-		if (Input.GetAxis ("Horizontal") != 0) {
-						anim.SetFloat ("Speed", 1);
-			
-				} else {
-						anim.SetFloat ("Speed", 0);
-				}
+
 
 
 
