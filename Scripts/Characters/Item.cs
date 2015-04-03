@@ -1,19 +1,21 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Item : MonoBehaviour {
+	
+	public Dictionary<string, ArrayList> Abilities = new Dictionary<string, ArrayList> ();
+	ArrayList IceBall = new ArrayList ();
 
-	public string firstAbilityName = "fireball";
-	public int firstAbilitycurrentExp = 5;
-	public int firstAbilityexperienceRemainder = 95;
-	public int firstAbilitycurrentLevel = 5;
-	public int firstAbilityPower = 95;
-	
-	
-	public string secondAbilityName = "waterball";
-	public int secondAbilitycurrentExp = 8;
-	public int secondAbilityexperienceRemainder = 92;
-	public int secondAbilitycurrentLevel = 9;
-	public int secondAbilityPower = 99999999;
+	void Awake(){
+		IceBall.Add ("Ice Ball");
+		IceBall.Add (5);
+
+		Abilities.Add("A1", IceBall);
+
+
+		//Debug.Log (Abilities["A1"]);
+		//Debug.Log (Abilities ["A1"][1]);
+	}
 
 }
